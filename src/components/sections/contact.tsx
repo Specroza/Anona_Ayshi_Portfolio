@@ -16,57 +16,56 @@ export function Contact() {
   const [status, setStatus] = useState<Status>({ state: "idle" });
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  setStatus({ state: "sending" });
+    setStatus({ state: "sending" });
 
-  try {
-  await emailjs.send(
-    "service_j43ro1u",
-    "template_y1i0ia5",
-    {
-      name: form.name,
-      email: form.email,
-      message: form.message,
-    },
-    "hSCjAtCGlkGPDb9uN"
-  );
+    try {
+      await emailjs.send(
+        "service_j43ro1u",
+        "template_y1i0ia5",
+        {
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        },
+        "hSCjAtCGlkGPDb9uN"
+      );
 
-  await fetch(GOOGLE_SCRIPT_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name: form.name,
-      email: form.email,
-      message: form.message,
-    }),
-  });
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        }),
+      });
 
-  setForm({
-    name: "",
-    email: "",
-    message: "",
-  });
+      setForm({
+        name: "",
+        email: "",
+        message: "",
+      });
 
-  setStatus({
-    state: "sent",
-    message: "Message sent successfully!",
-  });
+      setStatus({
+        state: "sent",
+        message: "Message sent successfully!",
+      });
+    } catch (error) {
+      console.error(error);
 
-} catch (error) {
-  console.error(error);
-
-  setStatus({
-    state: "error",
-    message:
-      error instanceof Error
-        ? error.message
-        : "Unable to send message.",
-  });
-}
-
+      setStatus({
+        state: "error",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Unable to send message.",
+      });
+    }
+  };
 
   return (
     <Section id="contact">
@@ -125,7 +124,6 @@ export function Contact() {
 
           <Reveal delay={0.14}>
             <form className="glass-card p-6 sm:p-7" onSubmit={handleSubmit}>
-
               <div className="space-y-4">
                 <Field
                   id="contact-name"
@@ -145,22 +143,21 @@ export function Contact() {
                     Message
                   </label>
                   <textarea
-  id="contact-message"
-  required
-  rows={5}
-  maxLength={500}
-  value={form.message}
-  onChange={(e) =>
-    setForm({ ...form, message: e.target.value })
-  }
-  placeholder="Tell me about the role or the team."
-  className="mt-2 max-h-56 min-h-[7.5rem] w-full resize-y overflow-y-auto rounded-2xl border border-input bg-surface/60 px-4 py-3 text-sm placeholder:text-muted-foreground focus:border-primary/60 focus:outline-none"
-/>
+                    id="contact-message"
+                    required
+                    rows={5}
+                    maxLength={500}
+                    value={form.message}
+                    onChange={(e) =>
+                      setForm({ ...form, message: e.target.value })
+                    }
+                    placeholder="Tell me about the role or the team."
+                    className="mt-2 max-h-56 min-h-30 w-full resize-y overflow-y-auto rounded-2xl border border-input bg-surface/60 px-4 py-3 text-sm placeholder:text-muted-foreground focus:border-primary/60 focus:outline-none"
+                  />
 
-<p className="mt-1 text-right text-xs text-muted-foreground">
-  {form.message.length}/500
-</p>
-
+                  <p className="mt-1 text-right text-xs text-muted-foreground">
+                    {form.message.length}/500
+                  </p>
                 </div>
               </div>
               <MagneticButton type="submit" className="mt-6 w-full">
@@ -179,9 +176,8 @@ export function Contact() {
                 }`}
               >
                 {status.message ??
-  "Fill out the form and I'll get back to you as soon as possible."}
+                  "Fill out the form and I'll get back to you as soon as possible."}
               </p>
-
             </form>
           </Reveal>
         </div>
@@ -246,5 +242,4 @@ function Field({
       />
     </div>
   );
-}
 }
