@@ -76,14 +76,14 @@ export function Hero() {
               <ArrowRight className="size-4" aria-hidden="true" />
             </MagneticButton>
             <MagneticButton
-              href={resumeUrl}
-              download
-              variant="outline"
-              ariaLabel="Download resume as PDF"
-            >
-              <Download className="size-4" aria-hidden="true" />
-              Resume PDF
-            </MagneticButton>
+  href={resumeUrl}
+  download="ANONA_AYSHI_ROZARIO_SQA.pdf"
+  variant="outline"
+  ariaLabel="Download resume as PDF"
+>
+  <Download className="size-4" aria-hidden="true" />
+  Resume PDF
+</MagneticButton>
           </motion.div>
         </div>
 

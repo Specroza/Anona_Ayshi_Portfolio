@@ -21,7 +21,7 @@ type Props = {
   onClick?: () => void;
   variant?: Variant;
   className?: string;
-  download?: boolean;
+  download?: boolean | string;
   external?: boolean;
   ariaLabel?: string;
   type?: "button" | "submit";
