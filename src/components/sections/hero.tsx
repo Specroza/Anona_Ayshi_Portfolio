@@ -18,7 +18,7 @@ export function Hero() {
         aria-hidden="true"
       />
       <div
-        className="grid-backdrop pointer-events-none absolute inset-0 [mask-image:radial-gradient(70%_60%_at_50%_0%,black,transparent)]"
+        className="grid-backdrop pointer-events-none absolute inset-0 mask- [radial-gradient(70%_60%_at_50%_0%,black,transparent)]"
         aria-hidden="true"
       />
       <div
@@ -120,14 +120,14 @@ function ProfileCard() {
       initial={{ opacity: 0, y: 30, scale: 0.97 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-      className="relative mx-auto w-full max-w-[17rem] lg:justify-self-end"
+      className="relative mx-auto w-full max-w-[68] lg:justify-self-end"
     >
       <div
-        className="pointer-events-none absolute -inset-5 rounded-[2rem] [background:var(--gradient-accent)] opacity-20 blur-3xl"
+        className="pointer-events-none absolute -inset-5 rounded-[4x1] [background:var(--gradient-accent)] opacity-20 blur-3xl"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute inset-0 translate-x-[10px] translate-y-[10px] rounded-[18px] border border-border/60 bg-surface/30 backdrop-blur-sm"
+        className="pointer-events-none absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-[18px] border border-border/60 bg-surface/30 backdrop-blur-sm"
         aria-hidden="true"
       />
 
@@ -142,7 +142,7 @@ function ProfileCard() {
             ? { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
             : { duration: 7, repeat: Infinity, ease: "easeInOut" }
         }
-        className={`glass group relative overflow-hidden rounded-[18px] border transition-[border-color,box-shadow] duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`glass group relative overflow-hidden rounded-[18px] border transition-[border-color,box-shadow] duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           hovered
             ? "border-primary/45 shadow-[0_36px_90px_-24px_rgba(0,0,0,0.7),0_0_36px_-6px_color-mix(in_oklab,var(--primary)_45%,transparent)]"
             : "border-border/70 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.65)]"
@@ -170,7 +170,7 @@ function ProfileCard() {
             height={600}
             loading="eager"
             decoding="async"
-            className="aspect-square w-full object-cover grayscale-[0.75] transition-[filter,transform] duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03] group-hover:grayscale-0"
+            className="aspect-square w-full object-cover grayscale-[0.75] transition-[filter,transform] duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03] group-hover:grayscale-0"
           />
 
         </div>
