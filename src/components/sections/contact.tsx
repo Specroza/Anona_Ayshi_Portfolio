@@ -2,7 +2,7 @@ import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { Download, Github, Linkedin, Loader2, Mail, MapPin, Send } from "lucide-react";
 import { profile } from "@/data/portfolio";
-import { resumeUrl } from "@/lib/assets";
+import { resumeDownloadUrl } from "@/lib/assets";
 import { Reveal } from "@/components/motion-primitives";
 import { MagneticButton } from "@/components/magnetic-button";
 import { Section } from "@/components/section";
@@ -114,7 +114,7 @@ export function Contact() {
 
             <Reveal delay={0.26}>
               <div className="mt-8">
-                <MagneticButton href={resumeUrl} download variant="outline" ariaLabel="Download resume as PDF">
+                <MagneticButton href={resumeDownloadUrl} download variant="outline" ariaLabel="Download resume as PDF">
                   <Download className="size-4" aria-hidden="true" />
                   Download Resume
                 </MagneticButton>

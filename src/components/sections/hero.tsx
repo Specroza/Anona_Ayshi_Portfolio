@@ -76,10 +76,10 @@ export function Hero() {
               <ArrowRight className="size-4" aria-hidden="true" />
             </MagneticButton>
             <MagneticButton
-  href={resumeUrl}
-  download="ANONA_AYSHI_ROZARIO_SQA.pdf"
+ href={resumeUrl}
+  external
   variant="outline"
-  ariaLabel="Download resume as PDF"
+  ariaLabel="Open resume in Google Drive"
 >
   <Download className="size-4" aria-hidden="true" />
   Resume PDF
