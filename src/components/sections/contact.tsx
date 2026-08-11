@@ -9,7 +9,7 @@ import { Section } from "@/components/section";
 
 type Status = { state: "idle" | "sending" | "sent" | "error"; message?: string };
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbx_AEffwzHQWxuViCltVj4FVA1swdZxkcCJpUfKTtYbiKaUzvi0kcXodxR59A9dOmETVQ/exec";
+  "https://script.google.com/macros/s/AKfycbzk7_nZ7VUaHnn7BipYC2USKO70bu7slwJVHsMTUMhJORFdR9beLIs3OHcHnh9NBvGCtw/exec";
 
 export function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -22,27 +22,25 @@ export function Contact() {
 
     try {
       await emailjs.send(
-        "service_j43ro1u",
-        "template_y1i0ia5",
-        {
-          name: form.name,
-          email: form.email,
-          message: form.message,
-        },
-        "hSCjAtCGlkGPDb9uN"
-      );
+  "service_j43ro1u",
+  "template_y1i0ia5",
+  {
+    name: form.name,
+    email: form.email,
+    message: form.message,
+  },
+  "hSCjAtCGlkGPDb9uN"
+);
 
-      await fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          message: form.message,
-        }),
-      });
+await fetch(GOOGLE_SCRIPT_URL, {
+  method: "POST",
+  mode: "no-cors",
+  body: new URLSearchParams({
+    name: form.name,
+    email: form.email,
+    message: form.message,
+  }),
+});
 
       setForm({
         name: "",
