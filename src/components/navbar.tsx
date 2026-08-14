@@ -30,7 +30,13 @@ export function Navbar() {
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(`#${visible.target.id}`);
+        if (visible) {
+          const next = `#${visible.target.id}`;
+          setActive(next);
+          if (next === "#home" || next === "#contact") {
+            window.history.replaceState(null, "", next);
+          }
+        }
       },
       { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.25, 0.5, 1] },
     );

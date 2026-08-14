@@ -6,6 +6,7 @@ import { resumeDownloadUrl } from "@/lib/assets";
 import { Reveal } from "@/components/motion-primitives";
 import { MagneticButton } from "@/components/magnetic-button";
 import { Section } from "@/components/section";
+import { ScrambleText } from "@/components/scramble-text";
 
 type Status = { state: "idle" | "sending" | "sent" | "error"; message?: string };
 const GOOGLE_SCRIPT_URL =
@@ -82,7 +83,7 @@ await fetch(GOOGLE_SCRIPT_URL, {
             <Reveal>
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 font-mono text-xs tracking-widest text-primary uppercase">
                 <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
-                Contact
+                <ScrambleText text="Contact" />
               </span>
             </Reveal>
             <Reveal delay={0.08}>

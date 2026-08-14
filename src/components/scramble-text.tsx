@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState} from "react";
 
 const CHARS = "0123456789#$%&*<>/{}[]";
 
@@ -27,7 +27,11 @@ export function ScrambleText({ text, className, duration = 420 }: Props) {
     },
     []
   );
-
+ const startRef = useRef<() => void>(() => {});
+   useEffect(() => {
+    const id = setInterval(() => startRef.current(), 3000);
+    return () => clearInterval(id);
+  }, []);
   const start = () => {
     if (running.current) return;
     if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches)
@@ -62,7 +66,7 @@ export function ScrambleText({ text, className, duration = 420 }: Props) {
 
     frame.current = requestAnimationFrame(tick);
   };
-
+startRef.current = start;
   return (
     <span
       onMouseEnter={start}

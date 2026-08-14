@@ -24,11 +24,13 @@ export function ScrollButton() {
   const handleClick = () => {
     if (scrolled) {
       window.scrollTo({ top: 0, behavior: "smooth" });
+      window.history.replaceState(null, "", "#home");
       return;
     }
     const contact = document.querySelector<HTMLElement>("#contact");
     if (contact) {
       contact.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.replaceState(null, "", "#contact");
     } else {
       window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
     }
